@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db
+  name: db
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: db
+    spec:
+      containers:
+      - env:
+        - name: GET_HOST_FROM
+          value: dns
+        - name: POSTGRES_DB
+          value: dev
+        - name: POSTGRES_PASWORD
+          value: mysecretpassword
+        - name: POSTGRES_USER
+          value: postgres-dev
+        image: postgres
+        name: bulletindb
+        ports:
+        - containerPort: 5432
+        resources: {}
+      hostname: db
+      restartPolicy: Always
+status: {}
