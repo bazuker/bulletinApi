@@ -10,7 +10,7 @@ services:
       GET_HOST_FROM: dns
       POSTGRES_DB: dev
       POSTGRES_USER: postgres-dev
-      POSTGRES_PASWORD: mysecretpassword
+      POSTGRES_PASSWORD: mysecretpassword
     ports:
       - 5432:5432
     networks:
